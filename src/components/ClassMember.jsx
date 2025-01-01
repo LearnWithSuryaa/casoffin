@@ -128,79 +128,27 @@ const MembersList = () => {
       ref={containerRef}
     >
       <div className="container mx-auto text-center px-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-8 drop-shadow-lg">
           Anggota Kelas Casofin
         </h2>
 
-        {/* Form to Add Member */}
-        {/*<form
-          onSubmit={handleAddMember}
-          className="mb-12 bg-gray-700 p-6 rounded-lg shadow-lg"
-        >
-          <h3 className="text-2xl font-semibold text-pink-500 mb-4">
-            Tambahkan Anggota Baru
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              value={newMember.name}
-              onChange={handleInputChange}
-              placeholder="Nama"
-              className="p-2 rounded-lg bg-gray-600 text-white"
-              required
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setUploadedPhoto(e.target.files[0])}
-              className="p-2 rounded-lg bg-gray-600 text-white"
-              required
-            />
-            <input
-              type="text"
-              name="motto"
-              value={newMember.motto}
-              onChange={handleInputChange}
-              placeholder="Motto"
-              className="p-2 rounded-lg bg-gray-600 text-white"
-              required
-            />
-            <input
-              type="text"
-              name="instagram"
-              value={newMember.instagram}
-              onChange={handleInputChange}
-              placeholder="Link Instagram"
-              className="p-2 rounded-lg bg-gray-600 text-white"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="mt-4 px-6 py-2 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 transition-all duration-300"
-          >
-            Tambahkan Member
-          </button>
-        </form>*/}
-
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {displayedMembers.map((member) => (
             <div
               key={member.id}
-              className="member-card bg-gray-800 rounded-2xl shadow-2xl p-6 transform hover:scale-110 transition-transform duration-300 hover:shadow-orange-400 hover:bg-gray-600"
+              className="member-card bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 transform hover:scale-105 transition-transform duration-300 hover:shadow-orange-400 hover:bg-gray-600"
               onClick={() => window.open(member.instagram, "_blank")}
               style={{ cursor: "pointer" }}
             >
               <img
-                className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-400"
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 border-4 border-orange-400"
                 src={member.photo}
                 alt={member.name}
               />
-              <h3 className="text-xl font-semibold text-pink-500 mb-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-pink-500 mb-2">
                 {member.name}
               </h3>
-              <p className="text-gray-400">{member.motto}</p>
+              <p className="text-sm sm:text-base text-gray-400">{member.motto}</p>
             </div>
           ))}
         </div>
@@ -208,7 +156,7 @@ const MembersList = () => {
         {hasMore && (
           <button
             onClick={fetchMoreMembers}
-            className="mt-10 px-8 py-3 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 hover:shadow-xl transition-all duration-300"
+            className="mt-10 px-6 py-3 w-full sm:w-auto bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 hover:shadow-xl transition-all duration-300"
           >
             Tampilkan Lebih Banyak
           </button>

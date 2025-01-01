@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CameraIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../context/AuthContext";
@@ -37,10 +37,57 @@ const HeroPage = () => {
   ];
 
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuth(); // Ambil status login dari AuthContext
+  const { isLoggedIn } = useAuth();
+  const audioRef = useRef(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(true);
+
+  useEffect(() => {
+    const handleInteraction = () => {
+      if (audioRef.current) {
+        audioRef.current.muted = false; // Menghapus mute setelah interaksi
+      }
+      window.removeEventListener("click", handleInteraction);
+    };
+
+    window.addEventListener("click", handleInteraction);
+
+    return () => {
+      window.removeEventListener("click", handleInteraction);
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (audioRef.current.paused) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+  };
 
   return (
     <div className="overflow-x-hidden">
+      {isPopupVisible && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-gray-900 p-4 md:p-6 rounded-lg shadow-xl text-center w-11/12 sm:w-96">
+            <p className="mb-4 text-gray-100 text-sm md:text-lg">
+              Klik di mana saja pada layar untuk mengaktifkan audio!
+            </p>
+            <button
+              onClick={closePopup}
+              className="px-4 py-2 md:px-6 md:py-2 bg-orange-500 text-gray-900 font-bold rounded-full hover:bg-orange-400 transition-transform transform hover:scale-105 text-sm md:text-base"
+            >
+              Oke, Mengerti
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative bg-black text-white min-h-screen flex items-center overflow-hidden">
         {/* Background Video */}
@@ -49,7 +96,7 @@ const HeroPage = () => {
           loop
           muted
           className="absolute inset-0 w-full h-full object-cover opacity-30"
-          poster="https://firebasestorage.googleapis.com/v0/b/your-project-id.appspot.com/o/video%2Fbg-fallback.jpg?alt=media"
+          poster="https://firebasestorage.googleapis.com/v0/b/website-kelas-bf7e0.appspot.com/o/video%2Fbg-fallback.jpg?alt=media"
         >
           <source
             src="https://firebasestorage.googleapis.com/v0/b/website-kelas-bf7e0.appspot.com/o/video%2Fbg.mp4?alt=media"
@@ -57,17 +104,17 @@ const HeroPage = () => {
           />
         </video>
 
-        <audio autoPlay loop className="hidden">
+        <audio ref={audioRef} autoPlay loop muted className="hidden">
           <source src="/audio/hero.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
 
         {/* Content */}
         <div className="relative container mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 text-orange-400">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 text-orange-400">
             Yo! Selamat Datang di Casofin 🚀
           </h1>
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-300">
+          <p className="text-sm sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-300">
             Tempatnya nostalgia vibes kelas plus fitur seru buat seru-seruan.
             Yuk cek galeri momen epic kita atau coba fitur gokil "Cek Khodam"!
             🔥
