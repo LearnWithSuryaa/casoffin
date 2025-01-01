@@ -136,9 +136,13 @@ const MembersList = () => {
           {displayedMembers.map((member) => (
             <div
               key={member.id}
-              className="member-card bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 transform hover:scale-105 transition-transform duration-300 hover:shadow-orange-400 hover:bg-gray-600"
+              className={`member-card bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 transform hover:scale-105 transition-transform duration-300 hover:shadow-orange-400 hover:bg-gray-600 ${
+                member.name === "Surya Makmur Abadi" ? "bg-gradient-to-br from-orange-500 via-black to-orange-600 border-2 border-orange-500" : ""
+              }`}
               onClick={() => window.open(member.instagram, "_blank")}
-              style={{ cursor: "pointer" }}
+              style={{
+                cursor: "pointer",
+              }}
             >
               <img
                 className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 border-4 border-orange-400"
