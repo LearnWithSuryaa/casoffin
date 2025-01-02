@@ -29,7 +29,7 @@ export default function Rating() {
 
     const handleChange = (event) => {
         const newValue = parseFloat(event.target.value);
-        if (newValue >= 0 && newValue <= 10 && remainingRatings > 0) {
+        if (newValue >= 0 && newValue <= 10) {
             setValue(newValue);
         }
     };
@@ -48,12 +48,10 @@ export default function Rating() {
             setErrorMessage("");
 
             try {
-                const docRef = await addDoc(collection(db, "ratings"), {
-                    value: value,
+                await addDoc(collection(db, "ratings"), {
+                    value,
                     timestamp: new Date(),
                 });
-                console.log("Document written with ID: ", docRef.id);
-
                 setRemainingRatings((prev) => prev - 1);
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -63,11 +61,6 @@ export default function Rating() {
             }
         }
     }, 500);
-
-    const resetRatings = () => {
-        setRemainingRatings(3);
-        localStorage.setItem("remainingRatings", "3");
-    };
 
     const imgIndex = Math.min(Math.floor(value / 2), units.length - 1);
 
@@ -112,7 +105,6 @@ export default function Rating() {
             {isSubmitting && <p style={{ color: "#ffcc33", marginTop: "1rem" }}>Menyimpan rating...</p>}
             {errorMessage && <p style={{ color: "red", marginTop: "1rem" }}>{errorMessage}</p>}
             {remainingRatings === 0 && <p style={{ color: "white", marginTop: "1rem" }}>Anda telah memberikan semua rating.</p>}
-
         </div>
     );
 }
