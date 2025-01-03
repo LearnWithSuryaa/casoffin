@@ -10,6 +10,7 @@ import GalleryPage from "./pages/GalleryPage";
 import CekKhodam from "./pages/CekKhodam";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import WallOfSecretsPage from "./pages/WallOfSecretsPage";
 import { AuthProvider, useAuth } from "./context/AuthContext"; // Gunakan AuthContext
 
 const ProtectedRoute = ({ children }) => {
@@ -46,6 +47,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <CekKhodam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/wall-of-secrets"
+              element={
+                <ProtectedRoute>
+                  <WallOfSecretsPage />
                 </ProtectedRoute>
               }
             />

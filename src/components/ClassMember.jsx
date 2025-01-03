@@ -6,11 +6,17 @@ import { EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MembersList = () => {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animasi berlangsung 1 detik
+    });
+
     const fetchMembers = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "members"));
@@ -58,11 +64,13 @@ const MembersList = () => {
           modules={[EffectCoverflow, Navigation]}
           className="mySwiper"
         >
-          {members.map((member, index) => (
+          {members.map((member) => (
             <SwiperSlide key={member.id} className="flex justify-center">
               <div
-                className={`member-card bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 transform hover:scale-105 transition-transform duration-300 hover:shadow-orange-400 hover:bg-gray-600 flex flex-col justify-center items-center ${
-                  member.name === "Surya Makmur Abadi" ? "bg-gradient-to-br from-orange-500 via-black to-orange-600 border-2 border-orange-500" : ""
+                className={`member-card relative bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 ${
+                  member.name === "Surya Makmur Abadi"
+                    ? "bg-gradient-to-br from-orange-500 via-black to-orange-600 border-2 border-orange-500"
+                    : ""
                 }`}
                 onClick={() => window.open(member.instagram, "_blank")}
                 style={{
@@ -70,16 +78,23 @@ const MembersList = () => {
                   width: "260px",
                   height: "340px",
                 }}
+                data-aos="flip-left"
               >
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl z-10"
+                  style={{
+                    pointerEvents: "none",
+                  }}
+                ></div>
                 <img
-                  className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-orange-400 object-cover"
+                  className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-orange-400 object-cover z-20"
                   src={member.photo}
                   alt={member.name}
                 />
-                <h3 className="mt-4 text-base md:text-lg font-semibold text-orange-200">
+                <h3 className="mt-4 text-base md:text-lg font-semibold text-orange-200 z-20">
                   {member.name}
                 </h3>
-                <p className="mt-2 text-sm md:text-base text-orange-300 text-center">
+                <p className="mt-2 text-sm md:text-base text-orange-300 text-center z-20">
                   {member.motto}
                 </p>
               </div>
@@ -102,6 +117,19 @@ const MembersList = () => {
 
         .mySwiper {
           padding: 2rem 0;
+        }
+
+        .member-card {
+          perspective: 1000px;
+        }
+
+        .member-card:hover {
+          transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+          box-shadow: 0 20px 40px rgba(255, 140, 0, 0.5);
+        }
+
+        .member-card:hover .absolute {
+          opacity: 1;
         }
       `}</style>
     </section>

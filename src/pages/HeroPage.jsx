@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CameraIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { CameraIcon, SparklesIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../context/AuthContext";
 import ClassMember from "../components/ClassMember";
 import "aos/dist/aos.css";
@@ -56,16 +56,6 @@ const HeroPage = () => {
     };
   }, []);
 
-  const toggleAudio = () => {
-    if (audioRef.current) {
-      if (audioRef.current.paused) {
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
-    }
-  };
-
   const closePopup = () => {
     setIsPopupVisible(false);
   };
@@ -76,7 +66,8 @@ const HeroPage = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-gray-900 p-4 md:p-6 rounded-lg shadow-xl text-center w-11/12 sm:w-96">
             <p className="mb-4 text-gray-100 text-sm md:text-lg">
-              Untuk tampilan yang lebih baik buka di mode desktop atau menggunakan laptop!
+              Untuk tampilan yang lebih baik buka di mode desktop atau
+              menggunakan laptop!
             </p>
             <button
               onClick={closePopup}
@@ -151,6 +142,22 @@ const HeroPage = () => {
               <SparklesIcon className="h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6" />
               <span className="text-sm md:text-base lg:text-lg">
                 Cek Khodam
+              </span>
+            </Link>
+
+            <Link
+              to={isLoggedIn ? "/wall-of-secrets" : "/login"}
+              onClick={(e) => {
+                if (!isLoggedIn) {
+                  e.preventDefault();
+                  navigate("/login");
+                }
+              }}
+              className="w-full sm:w-auto px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center justify-center space-x-2"
+            >
+              <KeyIcon className="h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6" />
+              <span className="text-sm md:text-base lg:text-lg">
+                Wall of Secrets
               </span>
             </Link>
           </div>

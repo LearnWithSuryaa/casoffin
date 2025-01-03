@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Footer from "../components/Footer";
 
 const CekKhodam = () => {
@@ -6,6 +6,7 @@ const CekKhodam = () => {
   const [result, setResult] = useState(null);
   const [errors, setErrors] = useState({});
   const [lastGenerated, setLastGenerated] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,9 +21,13 @@ const CekKhodam = () => {
       if (lastGenerated[name] && now - lastGenerated[name] < 10 * 60 * 1000) {
         setResult("Woi, tunggu 10 menit lagi buat cek ulang! ✋");
       } else {
-        const khodam = calculateKhodam(name);
-        setResult(khodam);
-        setLastGenerated({ ...lastGenerated, [name]: now });
+        setIsLoading(true);
+        setTimeout(() => {
+          const khodam = calculateKhodam(name);
+          setResult(khodam);
+          setLastGenerated({ ...lastGenerated, [name]: now });
+          setIsLoading(false);
+        }, 3000);
       }
     }
   };
@@ -141,7 +146,16 @@ const CekKhodam = () => {
           </button>
         </form>
 
-        {result && (
+        {isLoading && (
+          <div className="mt-8 flex items-center justify-center">
+            <div className="relative w-16 h-16 animate-spin">
+              <div className="absolute inset-0 w-full h-full rounded-full border-4 border-t-orange-400 border-gray-800"></div>
+              <div className="absolute inset-0 w-12 h-12 rounded-full border-4 border-t-pink-400 border-gray-900"></div>
+            </div>
+          </div>
+        )}
+
+        {result && !isLoading && (
           <section className="mt-8 bg-gradient-to-b from-gray-800 via-gray-900 to-black p-6 sm:p-8 rounded-xl shadow-xl text-center w-full max-w-md sm:max-w-lg border border-orange-500 transform hover:scale-105 transition-transform duration-300">
             {result === "Woi, tunggu 10 menit lagi buat cek ulang! ✋" ? (
               <p className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-600">
