@@ -30,8 +30,8 @@ const MembersList = () => {
   return (
     <section className="bg-black text-white py-20 relative">
       <div className="container mx-auto text-center px-4">
-      <h2
-          className="text-4xl md:text-5xl font-extrabold bg-clip-text text-center text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg relative"
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-center text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg relative"
           data-aos="zoom-in"
         >
           Anggota Kelas Casofin
@@ -41,7 +41,12 @@ const MembersList = () => {
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={3}
+          slidesPerView={"auto"}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
           coverflowEffect={{
             rotate: 50,
             stretch: 0,
@@ -67,14 +72,14 @@ const MembersList = () => {
                 }}
               >
                 <img
-                  className="w-28 h-28 rounded-full border-4 border-orange-400 object-cover"
+                  className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-orange-400 object-cover"
                   src={member.photo}
                   alt={member.name}
                 />
-                <h3 className="mt-4 text-lg font-semibold text-orange-200">
+                <h3 className="mt-4 text-base md:text-lg font-semibold text-orange-200">
                   {member.name}
                 </h3>
-                <p className="mt-2 text-sm text-orange-300 text-center">
+                <p className="mt-2 text-sm md:text-base text-orange-300 text-center">
                   {member.motto}
                 </p>
               </div>
