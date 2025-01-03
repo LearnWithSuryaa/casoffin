@@ -1,27 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig"; // Import Firestore
 
 const units = ["/Rating/1.png", "/Rating/2.png", "/Rating/3.png", "/Rating/4.png", "/Rating/5.png"];
+const safeGetLocalStorage = (key, defaultValue) => {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : defaultValue;
+    } catch (error) {
+        console.error(`Error reading localStorage key "${key}":`, error);
+        return defaultValue;
+    }
+};
+
 
 export default function Rating() {
-    const safeGetLocalStorage = (key, defaultValue) => {
-        try {
-            const value = localStorage.getItem(key);
-            return value !== null ? JSON.parse(value) : defaultValue;
-        } catch {
-            return defaultValue;
-        }
-    };
-
-    const [value, setValue] = useState(() => safeGetLocalStorage("lastRating", 5.0));
+    const [value, setValue] = useState(5.0); // Nilai default sementara
     const [remainingRatings, setRemainingRatings] = useState(() => safeGetLocalStorage("remainingRatings", 3));
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
-        localStorage.setItem("lastRating", JSON.stringify(value));
-    }, [value]);
+        // Ambil data dari Firestore untuk menghitung rata-rata rating
+        const fetchAverageRating = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "ratings"));
+                let total = 0;
+                let count = 0;
+
+                querySnapshot.forEach((doc) => {
+                    total += doc.data().value;
+                    count += 1;
+                });
+
+                const average = count > 0 ? total / count : 5.0; // Jika tidak ada data, gunakan 5.0 sebagai default
+                setValue(average);
+            } catch (error) {
+                console.error("Error fetching ratings: ", error);
+                setValue(5.0); // Fallback ke nilai default
+            }
+        };
+
+        fetchAverageRating();
+    }, []); // Efek hanya dijalankan sekali pada awal render
 
     useEffect(() => {
         localStorage.setItem("remainingRatings", JSON.stringify(remainingRatings));
