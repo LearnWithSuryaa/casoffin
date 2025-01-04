@@ -34,6 +34,13 @@ const HeroPage = () => {
         "Eksplorasi penerapan etika penggunaan AI dalam pendidikan, menyoroti efisiensi, tantangan, dan dampaknya terhadap pembelajaran modern, sekaligus menjaga keseimbangan antara teknologi dan nilai-nilai pendidikan.",
       link: "https://www.kompasiana.com/ahmadnadhifzuvar2430707/6764d9e4c925c45ee3292912/efisiensi-penerapan-etika-penggunaan-artificial-intelligence-terhadap-dunia-pendidikan",
     },
+    {
+      image: "/kelas/artikel-chicka.jpg",
+      title: "Artikel Chicka",
+      description:
+        "Artificial Intelligence (AI) memengaruhi kinerja belajar Gen Z dengan memberikan akses pembelajaran adaptif, personalisasi materi, efisiensi waktu, namun juga berpotensi menurunkan interaksi sosial.",
+      link: "https://mahasiswaindonesia.id/pengaruh-artificial-intelligence-ai-terhadap-kinerja-belajar-gen-z/",
+    },
   ];
 
   const navigate = useNavigate();
