@@ -24,3 +24,18 @@
     transform: translateX(-100%);
   }
 }
+
+/* Neon Glow Effect */
+.glow-text {
+  text-shadow: 0 0 8px #ffa500, 0 0 16px #ff7a00, 0 0 32px #ff7a00;
+}
+
+nav {
+  border-bottom: 2px solid transparent;
+}
+
+/* Underline Hover Effect */
+.group:hover .underline-hover {
+  width: 100%;
+  background-color: #ffa500;
+}
