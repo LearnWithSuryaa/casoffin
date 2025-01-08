@@ -59,7 +59,10 @@ const HeroPage = () => {
       <NavBar />
 
       {/* Hero Section */}
-      <section id="hero" className="relative bg-black text-white min-h-screen flex items-center">
+      <section
+        id="hero"
+        className="relative bg-black text-white min-h-screen flex items-center"
+      >
         {/* Background Video */}
         <video
           autoPlay
@@ -106,28 +109,28 @@ const HeroPage = () => {
             image: "/kelas/artikel-grenda.jpg",
             title: "Artikel Grenda",
             description:
-              "Adaptasi guru lansia terhadap teknologi dalam pendidikan modern.",
+              "Studi ini mengungkap bagaimana guru lansia beradaptasi dengan teknologi dalam pendidikan modern, mengeksplorasi tantangan, strategi pembelajaran, dan kontribusi mereka dalam menghadirkan pengalaman belajar yang relevan di era digital.",
             link: "https://www.kompasiana.com/grendaagriansyah/676462f334777c222577e432/adaptasi-guru-lansia-terhadap-perkembangan-teknologi-dalam-pendidikan-modern",
           },
           {
             image: "/kelas/artikel-fira.jpg",
             title: "Artikel Fira",
             description:
-              "Kisah perjuangan guru honorer desa menghadapi tantangan pendidikan.",
+              "Kisah perjuangan guru honorer desa menghadapi tantangan pendidikan modern dengan gaji terbatas, menunjukkan dedikasi dan semangat mereka dalam mencerdaskan generasi muda meski dalam keterbatasan ekonomi.",
             link: "https://www.kompasiana.com/safiraamin3102/6762f30534777c205767df53/perjuangan-guru-honorer-desa-terhadap-pendidikan-dengan-gaji-terbatas",
           },
           {
             image: "/kelas/artikel-nadif.jpg",
             title: "Artikel Nadif",
             description:
-              "Eksplorasi etika penggunaan AI dalam dunia pendidikan modern.",
+              "Eksplorasi penerapan etika penggunaan AI dalam pendidikan, menyoroti efisiensi, tantangan, dan dampaknya terhadap pembelajaran modern, sekaligus menjaga keseimbangan antara teknologi dan nilai-nilai pendidikan.",
             link: "https://www.kompasiana.com/ahmadnadhifzuvar2430707/6764d9e4c925c45ee3292912/efisiensi-penerapan-etika-penggunaan-artificial-intelligence-terhadap-dunia-pendidikan",
           },
           {
             image: "/kelas/artikel-chicka.jpg",
             title: "Artikel Chicka",
             description:
-              "Dampak AI terhadap gaya belajar generasi Z di era digital.",
+              "Artificial Intelligence (AI) memengaruhi kinerja belajar Gen Z dengan memberikan akses pembelajaran adaptif, personalisasi materi, efisiensi waktu, namun juga berpotensi menurunkan interaksi sosial.",
             link: "https://mahasiswaindonesia.id/pengaruh-artificial-intelligence-ai-terhadap-kinerja-belajar-gen-z/",
           },
         ]}
