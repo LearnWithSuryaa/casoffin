@@ -4,7 +4,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { app } from '../firebaseConfig';
@@ -59,6 +60,18 @@ const LoginPage = () => {
       }
     });
 
+    // Tangani hasil redirect login
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          navigate('/'); // Redirect jika login berhasil
+        }
+      })
+      .catch((err) => {
+        console.error('Redirect Error:', err.message);
+        setError(`Login dengan Google gagal: ${err.message}`);
+      });
+
     return () => unsubscribe(); // Cleanup listener saat komponen di-unmount
   }, [navigate]);
 
@@ -76,10 +89,10 @@ const LoginPage = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate('/'); // Redirect ke halaman utama setelah login dengan Google
+      await signInWithRedirect(auth, googleProvider);
     } catch (err) {
-      setError('Login dengan Google gagal. Silakan coba lagi.');
+      console.error('Redirect Error:', err.message);
+      setError(`Login dengan Google gagal: ${err.message}`);
     }
   };
 
