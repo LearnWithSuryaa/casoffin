@@ -133,6 +133,20 @@ const HeroPage = () => {
               "Artificial Intelligence (AI) memengaruhi kinerja belajar Gen Z dengan memberikan akses pembelajaran adaptif, personalisasi materi, efisiensi waktu, namun juga berpotensi menurunkan interaksi sosial.",
             link: "https://mahasiswaindonesia.id/pengaruh-artificial-intelligence-ai-terhadap-kinerja-belajar-gen-z/",
           },
+          {
+            image: "/kelas/artikel-alpin.jpg",
+            title: "Artikel Alpin",
+            description:
+              "Artikel ini membahas dampak penggunaan gawai terhadap minat baca anak usia dini, mengulas bagaimana konten digital menggantikan buku fisik, serta solusi menyeimbangkan keduanya demi perkembangan anak.",
+            link: "https://mahasiswaindonesia.id/pengaruh-penggunaan-gawai-terhadap-penurunan-minat-baca-anak-di-usia-dini/",
+          },
+          {
+            image: "/kelas/artikel-eka.jpg",
+            title: "Artikel Eka",
+            description:
+              "Google Forms mendukung peningkatan kualitas pendidikan Gen-Z dengan evaluasi cepat, pengumpulan data efektif, survei interaktif, dan kolaborasi digital yang relevan dalam pembelajaran berbasis teknologi modern.",
+            link: "https://www.indonesiana.id/read/178595/peran-google-form-terhadap-peningkatan-kualitas-pendidikan-di-era-gen-z?utm_source=WhatsApp",
+          },
         ]}
       />
       <Footer />

@@ -45,7 +45,7 @@ const NotFoundPage = () => {
         <h1 className="text-[120px] font-extrabold text-red-600 mt-8 drop-shadow-[0_0_25px_rgba(255,0,0,0.8)] glitch">
           404
         </h1>
-        <p className="text-2xl text-gray-300 mt-4">Kamu terjebak di wilayah hantu...</p>
+        <p className="text-2xl text-gray-300 mt-4">Kamu terjebak di wilayah Veroo...</p>
         <Link
           to="/"
           className="mt-8 inline-block px-8 py-3 border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-gray-900 transition-all duration-300 ease-out rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(255,0,0,0.8)]"
