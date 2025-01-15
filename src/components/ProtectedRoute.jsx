@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
 import GalleryCarousel from "./components/GalleryCarousel";
@@ -23,11 +23,6 @@ const App = () => {
   const handleLogin = () => {
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn");
   };
 
   return (

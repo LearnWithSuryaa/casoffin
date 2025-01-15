@@ -89,12 +89,21 @@ const LoginPage = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithRedirect(auth, googleProvider);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
+      if (isSafari) {
+        await signInWithRedirect(auth, googleProvider); // Untuk Safari
+      } else {
+        await signInWithPopup(auth, googleProvider);    // Untuk browser lain
+      }
+      
+      navigate('/');
     } catch (err) {
-      console.error('Redirect Error:', err.message);
+      console.error('Error:', err.message);
       setError(`Login dengan Google gagal: ${err.message}`);
     }
   };
+  
 
   const handleRegisterRedirect = () => {
     navigate('/Register'); // Redirect ke halaman register

@@ -11,10 +11,11 @@ import CekKhodam from "./pages/CekKhodam";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import WallOfSecretsPage from "./pages/WallOfSecretsPage";
-import { AuthProvider, useAuth } from "./context/AuthContext"; // Gunakan AuthContext
+import NotFoundPage from "./pages/NotFoundPage"; 
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn } = useAuth(); // Ambil status login dari AuthContext
+  const { isLoggedIn } = useAuth();
   return isLoggedIn ? children : <Navigate to="/login" replace />;
 };
 
@@ -24,16 +25,10 @@ const App = () => {
       <Router>
         <div className="App bg-gray-100">
           <Routes>
-            {/* Halaman Login */}
             <Route path="/login" element={<LoginPage />} />
-
-            {/* Halaman Register */}
             <Route path="/register" element={<RegisterPage />} />
-
-            {/* Halaman Utama */}
             <Route path="/" element={<HeroPage />} />
 
-            {/* Protected Routes */}
             <Route
               path="/gallery"
               element={
@@ -58,6 +53,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </Router>
