@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   getRedirectResult,
   GoogleAuthProvider,
+  signInWithPopup, // ✅ Ditambahkan agar tidak undefined
 } from 'firebase/auth';
 import { app } from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +27,7 @@ const LoginPage = () => {
   useEffect(() => {
     const form = containerRef.current;
 
-    // Animasi masuk untuk form container
+    // 🔹 Animasi masuk menggunakan GSAP
     gsap.fromTo(
       form,
       { opacity: 0, y: 50, scale: 0.8 },
@@ -39,7 +40,6 @@ const LoginPage = () => {
       }
     );
 
-    // Animasi berantai untuk elemen di dalam form
     gsap.fromTo(
       form.querySelectorAll('h2, form div, button, p'),
       { opacity: 0, y: 30 },
@@ -53,18 +53,18 @@ const LoginPage = () => {
       }
     );
 
-    // Periksa status login
+    // 🔹 Cek apakah user sudah login sebelumnya
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate('/'); // Redirect ke halaman utama jika sudah login
+        navigate('/'); // Redirect ke home jika sudah login
       }
     });
 
-    // Tangani hasil redirect login
+    // 🔹 Cek apakah login melalui redirect berhasil
     getRedirectResult(auth)
       .then((result) => {
         if (result?.user) {
-          navigate('/'); // Redirect jika login berhasil
+          navigate('/'); // Redirect jika sukses
         }
       })
       .catch((err) => {
@@ -75,26 +75,28 @@ const LoginPage = () => {
     return () => unsubscribe(); // Cleanup listener saat komponen di-unmount
   }, [navigate]);
 
+  // 🔹 Login dengan Email & Password
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/'); // Redirect ke halaman utama setelah login
+      navigate('/'); // Redirect ke home setelah login
     } catch (err) {
       setError('Login gagal. Periksa kembali email dan password Anda.');
     }
   };
 
+  // 🔹 Login dengan Google
   const handleGoogleLogin = async () => {
     try {
       const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
       
       if (isSafari) {
-        await signInWithRedirect(auth, googleProvider); // Untuk Safari
+        await signInWithRedirect(auth, googleProvider); // ✅ Safari tidak mendukung popup
       } else {
-        await signInWithPopup(auth, googleProvider);    // Untuk browser lain
+        await signInWithPopup(auth, googleProvider); // ✅ Browser lain pakai popup
       }
       
       navigate('/');
@@ -103,10 +105,10 @@ const LoginPage = () => {
       setError(`Login dengan Google gagal: ${err.message}`);
     }
   };
-  
 
+  // 🔹 Redirect ke halaman register
   const handleRegisterRedirect = () => {
-    navigate('/Register'); // Redirect ke halaman register
+    navigate('/Register');
   };
 
   return (

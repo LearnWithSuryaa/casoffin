@@ -1,58 +1,55 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Particles from "react-tsparticles";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const NotFoundPage = () => {
-  useEffect(() => {
-    const ghostEyes = document.querySelectorAll('.ghost-eye');
-    const onMouseMove = (e) => {
-      ghostEyes.forEach((eye) => {
-        const rect = eye.getBoundingClientRect();
-        const eyeX = rect.left + rect.width / 2;
-        const eyeY = rect.top + rect.height / 2;
-        const angle = Math.atan2(e.clientY - eyeY, e.clientX - eyeX) * (180 / Math.PI);
-        eye.style.transform = `rotate(${angle}deg) scale(1.1)`;
-        eye.style.transition = "transform 0.2s ease-out";
-      });
-    };
-    window.addEventListener('mousemove', onMouseMove);
-    return () => window.removeEventListener('mousemove', onMouseMove);
-  }, []);
-
-  const particlesOptions = {
-    background: { color: { value: "#000000" } },
-    fpsLimit: 60,
-    particles: {
-      color: { value: "#ff4500" },
-      links: { enable: true, distance: 150, color: "#ff4500" },
-      move: { enable: true, speed: 2 },
-    },
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden text-gray-300">
-      <Particles options={particlesOptions} className="absolute inset-0 z-0" />
-
-      <div className="relative text-center z-10">
-        <div className="relative mx-auto w-72 h-72 bg-gradient-to-b from-gray-700 to-black rounded-full shadow-2xl overflow-hidden animate-ghostFloat">
-          <div className="absolute w-48 h-48 bg-gradient-to-b from-gray-600 to-black rounded-full shadow-lg top-8 left-1/2 transform -translate-x-1/2">
-            <div className="ghost-eye absolute w-6 h-6 bg-red-600 rounded-full top-10 left-14 border-2 border-red-800 shadow-lg"></div>
-            <div className="ghost-eye absolute w-6 h-6 bg-red-600 rounded-full top-10 right-14 border-2 border-red-800 shadow-lg"></div>
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-20 h-10 bg-gradient-to-b from-red-600 to-red-800 rounded-b-full animate-glow"></div>
-          </div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-16 bg-gradient-to-b from-gray-700 to-black rounded-t-full animate-wave"></div>
+    <div className="overflow-x-hidden bg-black text-white min-h-screen flex flex-col relative">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/website-kelas-bf7e0.appspot.com/o/images%2Fnotfound-bg.jpg?alt=media')" }}
+      ></div>
+      
+      <section className="relative flex-grow flex flex-col items-center justify-center text-center px-6 lg:px-8">
+        {/* Content */}
+        <div className="relative z-10 bg-black bg-opacity-50 p-8 rounded-lg">
+          <h1 className="text-6xl font-extrabold text-orange-400 glitch">404</h1>
+          <p className="text-lg text-gray-300 mt-4 glitch-text">
+            Kamu tersesat dalam dunia nostalgia... 😵
+          </p>
+          <p className="text-sm text-gray-400 italic">(Mungkin kenangan ini sudah hilang?)</p>
+          <button
+            onClick={() => navigate("/")}
+            className="mt-6 px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold rounded-full hover:opacity-90 transform hover:scale-105 transition"
+          >
+            Kembali ke Beranda
+          </button>
         </div>
-        <h1 className="text-[120px] font-extrabold text-red-600 mt-8 drop-shadow-[0_0_25px_rgba(255,0,0,0.8)] glitch">
-          404
-        </h1>
-        <p className="text-2xl text-gray-300 mt-4">Kamu terjebak di wilayah Veroo...</p>
-        <Link
-          to="/"
-          className="mt-8 inline-block px-8 py-3 border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-gray-900 transition-all duration-300 ease-out rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(255,0,0,0.8)]"
-        >
-          Kembali ke Beranda
-        </Link>
-      </div>
+      </section>
+      
+      {/* Glitch Effect CSS */}
+      <style>
+        {`
+          .glitch {
+            position: relative;
+            display: inline-block;
+            animation: glitch 1s infinite linear alternate-reverse;
+          }
+          .glitch-text {
+            animation: glitch-text 1.5s infinite linear alternate-reverse;
+          }
+          @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+            100% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
+          }
+          @keyframes glitch-text {
+            0% { opacity: 0.8; transform: translateX(-1px); }
+            100% { opacity: 1; transform: translateX(1px); }
+          }
+        `}
+      </style>
     </div>
   );
 };

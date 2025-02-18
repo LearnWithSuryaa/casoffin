@@ -18,7 +18,6 @@ const RegisterPage = () => {
   useEffect(() => {
     const form = containerRef.current;
 
-    // Animasi masuk untuk form container
     gsap.fromTo(
       form,
       { opacity: 0, y: 50, scale: 0.8 },
@@ -31,7 +30,6 @@ const RegisterPage = () => {
       }
     );
 
-    // Animasi berantai untuk elemen di dalam form
     gsap.fromTo(
       form.querySelectorAll('h2, form div, button, p'),
       { opacity: 0, y: 30 },
@@ -55,11 +53,27 @@ const RegisterPage = () => {
       return;
     }
 
+    if (password.length < 6) {
+      setError('Password harus memiliki minimal 6 karakter.');
+      return;
+    }
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/'); // Redirect ke halaman utama setelah registrasi berhasil
+      navigate('/'); // Redirect ke home setelah registrasi sukses
     } catch (err) {
-      setError('Registrasi gagal. Silakan coba lagi.');
+      console.error('Firebase Error:', err.code, err.message);
+
+      // Menampilkan error lebih spesifik berdasarkan kode dari Firebase
+      if (err.code === 'auth/email-already-in-use') {
+        setError('Email sudah digunakan. Gunakan email lain.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Format email tidak valid.');
+      } else if (err.code === 'auth/weak-password') {
+        setError('Password terlalu lemah. Gunakan minimal 6 karakter.');
+      } else {
+        setError('Registrasi gagal. Silakan coba lagi.');
+      }
     }
   };
 
