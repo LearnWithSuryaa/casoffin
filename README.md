@@ -13,8 +13,7 @@ Yo, welcome to **Casofin**! Ini bukan sekadar website, tapi tempat buat ngejaga 
 ✅ **Galeri Kelas** – Simpan dan share foto serta video kenangan kelas biar nggak ilang begitu aja.  
 ✅ **Cek Kodam** – Lihat kodham mu sekarang juga.  
 ✅ **Wall of Secret** – Curhat atau share pesan anonim tanpa takut ketahuan siapa yang nulis.  
-✅ **Anggota Kelas** – Lihat daftar lengkap geng kelas, lengkap dengan profil mereka.  dikenang bareng-bareng.  
-✅ **Profil Anggota** – Setiap orang punya halaman sendiri buat pamer biodata dan pencapaian.   
+✅ **Anggota Kelas** – Lihat daftar lengkap geng kelas, lengkap dengan profil mereka.  dikenang bareng-bareng. .   
 ✅ **Responsive & Mudah Digunakan** – Bisa diakses dari HP, laptop, tablet, pokoknya fleksibel abis!  
 
 ---
@@ -103,7 +102,9 @@ Pengen ikut ngembangin Casofin? Bisa banget! Apalagi buat kalian yang mau belaja
 ---
 
 ## 📝 Lisensi  
-Casofin ini berlisensi **MIT**, jadi bebas dipakai siapa aja asal kasih credit ke tim dev-nya.  
+Proyek ini berlisensi di bawah GNU General Public License v3.0. Artinya, kalian bebas buat pakai, modifikasi, dan distribusi ulang proyek ini selama tetap mematuhi ketentuan GNU GPL v3.0.
+
+📜 Baca lisensi lengkapnya di sini: GNU GPL v3.0 
 
 📩 Ada pertanyaan atau mau ngobrol? Email aja ke `davindra514@gmail.com`  
 
