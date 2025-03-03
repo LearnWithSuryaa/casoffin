@@ -42,15 +42,29 @@ const HeroPage = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-gray-900 p-4 md:p-6 rounded-lg shadow-xl text-center w-11/12 sm:w-96">
             <p className="mb-4 text-gray-100 text-sm md:text-lg">
-              Hey, buat pengalaman yang lebih maksimal, coba buka pakai laptop
-              atau mode desktop ya! ✨
+              Pssst... udah tau belum? 🤫 Kita punya website baru,
+              Casobooth Langsung gaskeun, cek fitur-fitur kece dan bikin
+              momen epic di sana! 🚀✨
             </p>
-            <button
-              onClick={closePopup}
-              className="px-4 py-2 bg-orange-500 text-gray-900 font-bold rounded-full hover:bg-orange-400 transition-transform transform hover:scale-105"
-            >
-              Oke, Mengerti
-            </button>
+            <div className="flex flex-col gap-3">
+              {/* Tombol Tutup Popup */}
+              <button
+                onClick={closePopup}
+                className="px-4 py-2 bg-orange-500 text-gray-900 font-bold rounded-full hover:bg-orange-400 transition-transform transform hover:scale-105"
+              >
+                Oke, Mengerti
+              </button>
+
+              {/* Tombol Menuju Casobooth */}
+              <a
+                href="https://casobooth.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition-transform transform hover:scale-105"
+              >
+                Kunjungi Casobooth 🚀
+              </a>
+            </div>
           </div>
         </div>
       )}
