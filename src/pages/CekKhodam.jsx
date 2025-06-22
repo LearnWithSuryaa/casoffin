@@ -168,7 +168,7 @@ const CekKhodam = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-orange-300 mb-2 sm:mb-4">
                   Khodam Kamu Hari Ini:
                 </h3>
-                <p className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-600">
+                <p className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-600 py-4">
                   {result}
                 </p>
                 <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-gray-400 italic">
