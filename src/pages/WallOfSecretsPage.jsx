@@ -9,6 +9,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 const WallOfSecretsPage = () => {
   const [secret, setSecret] = useState("");
@@ -74,12 +75,13 @@ const WallOfSecretsPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <NavBar />
       {/* Background Music */}
       <audio autoPlay loop className="hidden">
         <source src="/audio/secrets.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <div className="flex-grow bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white p-8 font-mono">
+      <div className="flex-grow bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white p-8 py-28 font-mono">
         <h1 className="text-5xl font-extrabold text-center text-orange-400 mb-8 animate-pulse">
           Wall of Secrets
         </h1>

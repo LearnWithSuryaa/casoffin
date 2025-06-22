@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { storage } from "../firebaseConfig";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import Footer from "../components/Footer";
-
+import NavBar from "../components/NavBar";
 // Komponen Header
 const Header = () => {
   return (
@@ -104,6 +104,7 @@ const GalleryPage = () => {
 
   return (
     <div className="relative">
+      <NavBar />
       {/* Background Music */}
       <audio autoPlay loop className="hidden">
         <source src="/audio/gallery.mp3" type="audio/mpeg" />

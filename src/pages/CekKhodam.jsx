@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 const CekKhodam = () => {
   const [name, setName] = useState("");
@@ -96,12 +97,13 @@ const CekKhodam = () => {
 
   return (
     <div>
+      <NavBar />
       {/* Background Music */}
       <audio autoPlay loop className="hidden">
         <source src="/audio/khodam.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <div className="bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-12">
+      <div className="bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center py-28 px-4 sm:px-6 lg:px-12">
         <header className="text-center space-y-4">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-600 tracking-wide drop-shadow-lg">
             Cek Khodam

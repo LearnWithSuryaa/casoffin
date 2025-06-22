@@ -22,8 +22,8 @@ const menuItems = [
 const NavBar = () => {
   const { isLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true); 
-  const [lastScrollY, setLastScrollY] = useState(0); 
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -31,10 +31,10 @@ const NavBar = () => {
   const scrollToHero = () => {
     const heroSection = document.getElementById("hero");
     if (heroSection) {
-      const targetPosition = heroSection.offsetTop; 
-      const startPosition = window.scrollY; 
-      const distance = targetPosition - startPosition; 
-      const duration = 800; 
+      const targetPosition = heroSection.offsetTop;
+      const startPosition = window.scrollY;
+      const distance = targetPosition - startPosition;
+      const duration = 800;
       let startTime = null;
 
       const easeInOutQuad = (t, b, c, d) => {
@@ -89,7 +89,13 @@ const NavBar = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div
           className="flex items-center space-x-3 cursor-pointer"
-          onClick={scrollToHero}
+          onClick={() => {
+            if (location.pathname === "/") {
+              scrollToHero();
+            } else {
+              window.location.href = "/#hero";
+            }
+          }}
         >
           <h1 className="text-3xl text-orange-400 font-extrabold tracking-wide glow-text hover:scale-105 transition-transform duration-300 ease-out">
             Casofin 🚀
