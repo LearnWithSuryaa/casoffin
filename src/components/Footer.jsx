@@ -20,7 +20,7 @@ const Footer = () => {
                             <h2 className="mb-3 text-sm font-semibold uppercase text-orange-500">Created By</h2>
                             <ul className="text-gray-400 font-medium">
                                 <li>
-                                    <a href="https://www.instagram.com/suryahipersomniaa" className="hover:text-orange-500">
+                                    <a href="https://github.com/LearnWithSuryaa" className="hover:text-orange-500">
                                         SURYA
                                     </a>
                                 </li>
