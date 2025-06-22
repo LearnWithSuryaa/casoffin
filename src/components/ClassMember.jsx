@@ -37,7 +37,7 @@ const MembersList = () => {
     <section className="bg-black text-white py-20 relative">
       <div className="container mx-auto text-center ">
         <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-center text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg relative py-4"
+          className="text-4xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-center text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg relative py-4"
           data-aos="zoom-in"
         >
           Anggota Kelas Casofin

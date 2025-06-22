@@ -5,7 +5,7 @@ const AboutSection = () => (
     <div className="container mx-auto px-6 md:px-12">
       <div className="text-center mb-16">
         <h2
-          className="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-8 relative drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]"
+          className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-8 relative drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)] p-4"
           data-aos="fade-up"
         >
           Tentang Casofin
