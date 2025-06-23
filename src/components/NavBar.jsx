@@ -98,7 +98,7 @@ const NavBar = () => {
           }}
         >
           <h1 className="text-3xl text-orange-400 font-extrabold tracking-wide glow-text hover:scale-105 transition-transform duration-300 ease-out">
-            Casofin 🚀
+            Casoffin 🚀
           </h1>
         </div>
 

@@ -8,14 +8,14 @@ const AboutSection = () => (
           className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-8 relative drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)] p-4"
           data-aos="fade-up"
         >
-          Tentang Casofin
+          Tentang Casoffin
         </h2>
         <p
           className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed shadow-sm"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Casofin adalah rumahnya anak-anak Informatika 2024 yang gaspol di dunia
+          Casoffin adalah rumahnya anak-anak Informatika 2024 yang gaspol di dunia
           teknologi. Tempat nongkrong buat yang suka eksperimen, bikin proyek kece,
           dan siap bikin gebrakan di masa depan.
         </p>
@@ -29,10 +29,10 @@ const AboutSection = () => (
         >
           <div className="absolute -top-10 -left-10 w-24 h-24 bg-orange-500 opacity-40 blur-3xl rounded-full group-hover:animate-pulse"></div>
           <h3 className="text-3xl md:text-4xl font-bold text-orange-400 mb-4">
-            Apa Itu Casofin?
+            Apa Itu Casoffin?
           </h3>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            Casofin ngebentuk lo buat jadi developer kece dengan skill programming, bikin software, dan problem solving yang out of the box. Di sini, kita belajar sambil nambah portfolio yang legit.
+            Casoffin ngebentuk lo buat jadi developer kece dengan skill programming, bikin software, dan problem solving yang out of the box. Di sini, kita belajar sambil nambah portfolio yang legit.
           </p>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             Kita bukan sekadar komunitas, tapi gerakan yang ngajak lo jadi agent of change buat teknologi masa depan.

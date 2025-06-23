@@ -9,10 +9,10 @@ import NavBar from "../components/NavBar";
 const Header = () => (
   <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
     <h1 className="text-2xl md:text-7xl font-bold text-orange-500">
-      Kenangan Tak Terlupakan <br /> di Kelas Casofin
+      Kenangan Tak Terlupakan <br /> di Kelas Casoffin
     </h1>
     <p className="max-w-2xl text-base md:text-xl mt-8 text-gray-300">
-      Ini dia galeri momen-momen seru kita selama di kelas Casofin. Mulai dari
+      Ini dia galeri momen-momen seru kita selama di kelas Casoffin. Mulai dari
       senyuman hangat, tawa lepas, hingga kenangan penuh makna yang selalu bikin
       rindu. Yuk, nostalgia bareng!
     </p>

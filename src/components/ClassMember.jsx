@@ -40,7 +40,7 @@ const MembersList = () => {
           className="text-4xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-center text-transparent bg-gradient-to-r from-orange-500 to-pink-500 mb-12 drop-shadow-lg relative py-4"
           data-aos="zoom-in"
         >
-          Anggota Kelas Casofin
+          Anggota Kelas Casoffin
         </h2>
 
         <Swiper
