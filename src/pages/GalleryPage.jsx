@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { supabase } from "../supabaseClient"; // kamu harus punya supabaseClient.js
+import { storage } from "../firebaseConfig";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
@@ -8,10 +9,10 @@ import NavBar from "../components/NavBar";
 const Header = () => (
   <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
     <h1 className="text-2xl md:text-7xl font-bold text-orange-500">
-      Kenangan Tak Terlupakan <br /> di Kelas Casoffin
+      Kenangan Tak Terlupakan <br /> di Kelas Casofin
     </h1>
     <p className="max-w-2xl text-base md:text-xl mt-8 text-gray-300">
-      Ini dia galeri momen-momen seru kita selama di kelas Casoffin. Mulai dari
+      Ini dia galeri momen-momen seru kita selama di kelas Casofin. Mulai dari
       senyuman hangat, tawa lepas, hingga kenangan penuh makna yang selalu bikin
       rindu. Yuk, nostalgia bareng!
     </p>
@@ -76,36 +77,24 @@ const GalleryPage = () => {
   );
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const { data, error } = await supabase.storage
-        .from("gallery") // ← ganti dari "public"
-        .list("GambarAman", {
-          limit: 100,
-          offset: 0,
-          sortBy: { column: "name", order: "asc" },
-        });
+    const folderRef = ref(storage, "GambarAman");
 
-      if (error) {
-        console.error("Error listing images from Supabase:", error);
-        return;
-      }
-
-      const urls = data.map((item) => {
-        const { data: urlData } = supabase.storage
-          .from("gallery") // ← ganti juga di sini
-          .getPublicUrl(`GambarAman/${item.name}`);
-
-        return {
-          title: item.name,
-          thumbnail: urlData.publicUrl,
-        };
-      });
-
-      setProducts(urls);
-    };
-
-    fetchImages();
+    listAll(folderRef)
+      .then((result) => {
+        const fetchUrls = result.items.map((itemRef) =>
+          getDownloadURL(itemRef).then((url) => ({
+            title: itemRef.name,
+            thumbnail: url,
+          }))
+        );
+        return Promise.all(fetchUrls);
+      })
+      .then((fetchedProducts) => setProducts(fetchedProducts))
+      .catch((error) =>
+        console.error("Error fetching images from Firebase:", error)
+      );
   }, []);
+
   return (
     <div className="relative">
       <NavBar />

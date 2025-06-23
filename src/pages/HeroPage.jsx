@@ -86,7 +86,7 @@ const HeroPage = () => {
           poster="https://firebasestorage.googleapis.com/v0/b/website-kelas-bf7e0.appspot.com/o/video%2Fbg-fallback.jpg?alt=media"
         >
           <source
-            src="https://szklesbyrzbcxewrkjrn.supabase.co/storage/v1/object/public/video//WhatsApp%20Video%202025-06-23%20at%2009.53.03-2.mp4"
+            src="https://firebasestorage.googleapis.com/v0/b/website-kelas-bf7e0.appspot.com/o/video%2Fbg.mp4?alt=media&token=ac3b19f7-f84c-49ff-adb3-7a53268d3f8a"
             type="video/mp4"
           />
         </video>
