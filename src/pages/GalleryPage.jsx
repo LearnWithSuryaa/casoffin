@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { storage } from "../firebaseConfig";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { supabase } from "../supabaseClient"; // kamu harus punya supabaseClient.js
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
@@ -77,24 +76,36 @@ const GalleryPage = () => {
   );
 
   useEffect(() => {
-    const folderRef = ref(storage, "GambarAman");
+    const fetchImages = async () => {
+      const { data, error } = await supabase.storage
+        .from("gallery") // ← ganti dari "public"
+        .list("GambarAman", {
+          limit: 100,
+          offset: 0,
+          sortBy: { column: "name", order: "asc" },
+        });
 
-    listAll(folderRef)
-      .then((result) => {
-        const fetchUrls = result.items.map((itemRef) =>
-          getDownloadURL(itemRef).then((url) => ({
-            title: itemRef.name,
-            thumbnail: url,
-          }))
-        );
-        return Promise.all(fetchUrls);
-      })
-      .then((fetchedProducts) => setProducts(fetchedProducts))
-      .catch((error) =>
-        console.error("Error fetching images from Firebase:", error)
-      );
+      if (error) {
+        console.error("Error listing images from Supabase:", error);
+        return;
+      }
+
+      const urls = data.map((item) => {
+        const { data: urlData } = supabase.storage
+          .from("gallery") // ← ganti juga di sini
+          .getPublicUrl(`GambarAman/${item.name}`);
+
+        return {
+          title: item.name,
+          thumbnail: urlData.publicUrl,
+        };
+      });
+
+      setProducts(urls);
+    };
+
+    fetchImages();
   }, []);
-
   return (
     <div className="relative">
       <NavBar />
