@@ -42,9 +42,9 @@ const HeroPage = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-gray-900 p-4 md:p-6 rounded-lg shadow-xl text-center w-11/12 sm:w-96">
             <p className="mb-4 text-gray-100 text-sm md:text-lg">
-              ⚠️ Servere lagi down rek! Tampilan mungkin agak ngaco, maklum
-              pengembang e dewean. Lagi tak garap gas pol ben cepet normal
-              maneh, suwun wis sabar yo! 🙏
+              Pssst... udah tau belum? 🤫 Kita punya website baru, Casobooth
+              Langsung gaskeun, cek fitur-fitur kece dan bikin momen epic di
+              sana! 🚀✨
             </p>
             <div className="flex flex-col gap-3">
               {/* Tombol Tutup Popup */}
