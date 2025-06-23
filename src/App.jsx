@@ -11,7 +11,8 @@ import CekKhodam from "./pages/CekKhodam";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import WallOfSecretsPage from "./pages/WallOfSecretsPage";
-import NotFoundPage from "./pages/NotFoundPage"; 
+import NotFoundPage from "./pages/NotFoundPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"; // ✅ Tambahkan ini
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
@@ -53,6 +54,8 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="/privacy" element={<PrivacyPolicyPage />} /> {/* ✅ Ditambahkan */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
